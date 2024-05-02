@@ -1,0 +1,20 @@
+class Solution:
+    def reversePrefix(self, word: str, ch: str) -> str:
+        i = 0
+        result = word
+        if ch in word:
+            for i in range(len(word)):
+                if word[i] == ch:
+                    if i == len(word)-1:
+                        result = word[::-1]
+                        return result
+                    else:
+                        firsthalf = word[:i+1]
+                        print(firsthalf)
+                        firsthalf = firsthalf[::-1]
+                        print(firsthalf)
+                        secondhalf = word[i+1:]
+                        result = firsthalf + secondhalf
+                        return result
+                i+=1
+        return result
