@@ -1,0 +1,21 @@
+class Solution:
+    def compareVersion(self, version1: str, version2: str) -> int:
+        lenver1, lenver2 = len(version1), len(version2)
+
+        pointer1 = pointer2 = 0
+        while pointer1 < lenver1 or pointer2 < lenver2:
+            num1 = num2 = 0
+
+            while pointer1 < lenver1 and version1[pointer1] != '.':
+                num1 = num1 * 10 + int(version1[pointer1])
+                pointer1 += 1
+
+            while pointer2 < lenver2 and version2[pointer2] != '.':
+                num2 = num2 * 10 + int(version2[pointer2])
+                pointer2 += 1
+
+            if num1 != num2:
+                return -1 if num1 < num2 else 1
+            pointer1, pointer2 = pointer1 + 1, pointer2 + 1
+
+        return 0
